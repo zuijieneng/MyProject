@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SSMProject
 # Car用到的技术
 SSM架构+Spring框架+SpringMVC框架+MyBatis框架+MySQL数据库+EasyUI框架
