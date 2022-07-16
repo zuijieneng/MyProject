@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="jackson-annotations-2.10.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/jackson-annotations-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/jackson-core-2.10.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/commons-io-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/commons-fileupload-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/commons-dbutils-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/commons-beanutils-1.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

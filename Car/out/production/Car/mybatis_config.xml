@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- 声明区 -->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"><!-- 引入dtd文件-->
+<configuration>
+    <settings>
+        <!-- 指定log4j作为日志系统-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 数据库表名+类名的_命名与类名+属性名的驼峰命名法的自动映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.edu.zut.entity"/><!--给整个包的类起别名：：别名为类名-->
+    </typeAliases>
+
+    <!-- 引入pagehelper的插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor" />
+    </plugins>
+</configuration>

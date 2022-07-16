@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zut.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="usex" jdbcType="CHAR" property="usex" />
+    <result column="upwd" jdbcType="VARCHAR" property="upwd" />
+    <result column="ureal_name" jdbcType="VARCHAR" property="urealName" />
+    <result column="uscore" jdbcType="INTEGER" property="uscore" />
+    <result column="usize" jdbcType="INTEGER" property="usize" />
+    <result column="ustatus" jdbcType="INTEGER" property="ustatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tab_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.User">
+    insert into tab_user (uid, uname, usex, 
+      upwd, ureal_name, uscore, 
+      usize, ustatus)
+    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{usex,jdbcType=CHAR}, 
+      #{upwd,jdbcType=VARCHAR}, #{urealName,jdbcType=VARCHAR}, #{uscore,jdbcType=INTEGER}, 
+      #{usize,jdbcType=INTEGER}, #{ustatus,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.User">
+    update tab_user
+    set uname = #{uname,jdbcType=VARCHAR},
+      usex = #{usex,jdbcType=CHAR},
+      upwd = #{upwd,jdbcType=VARCHAR},
+      ureal_name = #{urealName,jdbcType=VARCHAR},
+      uscore = #{uscore,jdbcType=INTEGER},
+      usize = #{usize,jdbcType=INTEGER},
+      ustatus = #{ustatus,jdbcType=INTEGER}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select uid, uname, usex, upwd, ureal_name, uscore, usize, ustatus
+    from tab_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select uid, uname, usex, upwd, ureal_name, uscore, usize, ustatus
+    from tab_user
+  </select>
+</mapper>

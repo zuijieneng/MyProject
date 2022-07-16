@@ -1,0 +1,43 @@
+table{
+	border:1px solid blue;
+	border-collapse: collapse;
+	width:800px;
+	margin:10px auto;
+}
+td,th{
+	border:1px solid blue;
+	text-align:center;
+	padding:4px;
+}
+td{
+	text-align:left;
+}
+#tab_add td,#tab_add th{
+	padding:2px;
+}
+img{
+	 width:100px;
+	 height:100px;
+}
+.div_a{
+	text-align: right;
+	margin-right:176px;
+}
+h3{
+	margin:5px;
+	color:red;
+	text-align: center;
+}
+h1{
+	margin:5px;
+	color:blue;
+	text-align: center;
+}
+ #divWelcome{
+      text-align: center;
+      margin:100px auto;
+      color:red;
+      font-weight: bold;
+      font-size: 50px;
+      letter-spacing: 10px;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.RoleUrlMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.RoleUrl" >
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <id column="url_id" property="urlId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from tab_role_url
+    where role_id = #{roleId,jdbcType=VARCHAR}
+      and url_id = #{urlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.RoleUrl" >
+    insert into tab_role_url (role_id, url_id)
+    values (#{roleId,jdbcType=VARCHAR}, #{urlId,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select role_id, url_id
+    from tab_role_url
+  </select>
+</mapper>

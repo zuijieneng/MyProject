@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.OperationMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.Operation" >
+    <id column="url_id" property="urlId" jdbcType="VARCHAR" />
+    <result column="url_path" property="urlPath" jdbcType="VARCHAR" />
+    <result column="url_name" property="urlName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tab_url
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.Operation" >
+    insert into tab_url (url_id, url_path, url_name
+      )
+    values (#{urlId,jdbcType=VARCHAR}, #{urlPath,jdbcType=VARCHAR}, #{urlName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.Operation" >
+    update tab_url
+    set url_path = #{urlPath,jdbcType=VARCHAR},
+      url_name = #{urlName,jdbcType=VARCHAR}
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select url_id, url_path, url_name
+    from tab_url
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select url_id, url_path, url_name
+    from tab_url
+    where url_path = #{url_path,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select * from tab_url
+  </select>
+</mapper>

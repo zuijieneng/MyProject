@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <!-- 1 扫描bao 创建bean -->
+    <context:component-scan base-package="com.edu.zut.controller"/>
+    <context:component-scan base-package="com.edu.zut.exception"/>
+    <!-- 2 通过mvc标签自动配置：配置处理器映射器+ 配置处理器适配器 -->
+    <mvc:annotation-driven/>
+    <!-- 3 配置多部件表单解析器 -->
+    <bean  id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="99999999"/>
+    </bean>
+    <!-- 4 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--设置拦截器的拦截路径，支持*通配-->
+            <!--/**         表示拦截所有映射-->
+            <!--/*          表示拦截所有/开头的映射-->
+            <!--/user/*     表示拦截所有/user/开头的映射-->
+            <!--/user/add*  表示拦截所有/user/开头，且具体映射名称以add开头的映射-->
+            <!--/user/*All  表示拦截所有/user/开头，且具体映射名称以All结尾的映射-->
+            <mvc:mapping path="/user/*"/>
+            <mvc:mapping path="/car/*"/>
+            <mvc:mapping path="/check/*"/>
+            <mvc:mapping path="/carin/*"/>
+            <mvc:mapping path="/carout/*"/>
+            <mvc:mapping path="/customer/*"/>
+            <mvc:mapping path="/department/*"/>
+            <mvc:mapping path="/role/*"/>
+            <mvc:mapping path="/operation/*"/>
+            <mvc:mapping path="/user/*"/>
+            <mvc:exclude-mapping path="/user/login.action"/>
+            <mvc:exclude-mapping path="/user/list.action"/>
+            <mvc:exclude-mapping path="/car/getAllFenye.action"/>
+            <mvc:exclude-mapping path="/car/getAll.action"/>
+            <mvc:exclude-mapping path="/check/list.action"/>
+            <mvc:exclude-mapping path="/carin/getAll.action"/>
+            <mvc:exclude-mapping path="/carout/getAll.action"/>
+            <mvc:exclude-mapping path="/customer/list.action"/>
+            <mvc:exclude-mapping path="/department/list.action"/>
+            <mvc:exclude-mapping path="/department/getNames.action"/>
+            <mvc:exclude-mapping path="/role/list.action"/>
+            <mvc:exclude-mapping path="/operation/list.action"/>
+            <mvc:exclude-mapping path="/user/list.action"/>
+            <!--select里的ajax-->
+            <mvc:exclude-mapping path="/operation/getNames.action"/>
+            <mvc:exclude-mapping path="/customer/getId.action"/>
+            <mvc:exclude-mapping path="/user/getNames.action"/>
+            <mvc:exclude-mapping path="/user/getId.action"/>
+            <mvc:exclude-mapping path="/customer/getProvince.action"/>
+            <mvc:exclude-mapping path="/customer/getCity.action"/>
+            <!--指定具体的拦截器类-->
+            <bean class="com.edu.zut.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+
+</beans>

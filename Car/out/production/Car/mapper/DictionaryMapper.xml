@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.DictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.Dictionary" >
+    <id column="dictionary_id" property="dictionaryId" jdbcType="INTEGER" />
+    <result column="dictionary_name" property="dictionaryName" jdbcType="VARCHAR" />
+    <result column="dictionary_type" property="dictionaryType" jdbcType="INTEGER" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tab_dictionary
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.Dictionary" >
+    insert into tab_dictionary (dictionary_id, dictionary_name, dictionary_type, 
+      province_id)
+    values (#{dictionaryId,jdbcType=INTEGER}, #{dictionaryName,jdbcType=VARCHAR}, #{dictionaryType,jdbcType=INTEGER}, 
+      #{provinceId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.Dictionary" >
+    update tab_dictionary
+    set dictionary_name = #{dictionaryName,jdbcType=VARCHAR},
+      dictionary_type = #{dictionaryType,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER}
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select dictionary_id, dictionary_name, dictionary_type, province_id
+    from tab_dictionary
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select dictionary_id, dictionary_name, dictionary_type, province_id
+    from tab_dictionary
+  </select>
+</mapper>

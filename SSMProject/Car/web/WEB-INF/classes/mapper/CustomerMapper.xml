@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.Customer" >
+    <id column="customer_id" property="customerId" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_sex" property="customerSex" jdbcType="CHAR" />
+    <result column="customer_phone" property="customerPhone" jdbcType="CHAR" />
+    <result column="customer_pid" property="customerPid" jdbcType="CHAR" />
+    <result column="customer_job" property="customerJob" jdbcType="VARCHAR" />
+    <result column="customer_address" property="customerAddress" jdbcType="VARCHAR" />
+    <result column="customer_photo" property="customerPhoto" jdbcType="VARCHAR" />
+    <result column="customer_status" property="customerStatus" jdbcType="INTEGER" />
+    <result column="customer_time" property="customerTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tab_customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.Customer" >
+    insert into tab_customer (customer_id, customer_name, customer_sex, 
+      customer_phone, customer_pid, customer_job, 
+      customer_address, customer_photo, customer_status, 
+      customer_time)
+    values (#{customerId,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, #{customerSex,jdbcType=CHAR}, 
+      #{customerPhone,jdbcType=CHAR}, #{customerPid,jdbcType=CHAR}, #{customerJob,jdbcType=VARCHAR}, 
+      #{customerAddress,jdbcType=VARCHAR}, #{customerPhoto,jdbcType=VARCHAR}, #{customerStatus,jdbcType=INTEGER}, 
+      #{customerTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.Customer" >
+    update tab_customer
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_sex = #{customerSex,jdbcType=CHAR},
+      customer_phone = #{customerPhone,jdbcType=CHAR},
+      customer_pid = #{customerPid,jdbcType=CHAR},
+      customer_job = #{customerJob,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      customer_photo = #{customerPhoto,jdbcType=VARCHAR},
+      customer_status = #{customerStatus,jdbcType=INTEGER},
+      customer_time = #{customerTime,jdbcType=TIMESTAMP}
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select customer_id, customer_name, customer_sex, customer_phone, customer_pid, customer_job, 
+    customer_address, customer_photo, customer_status, customer_time
+    from tab_customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select customer_id, customer_name, customer_sex, customer_phone, customer_pid, customer_job, 
+    customer_address, customer_photo, customer_status, customer_time
+    from tab_customer
+    order by customer_id
+  </select>
+  <delete id="deleteByCid">
+    delete from tab_customer
+    where customer_id in (#{cid})
+  </delete>
+</mapper>

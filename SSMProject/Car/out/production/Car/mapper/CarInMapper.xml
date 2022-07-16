@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.CarInMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.CarIn" >
+    <id column="car_in_id" property="carInId" jdbcType="VARCHAR" />
+    <result column="car_out_id" property="carOutId" jdbcType="VARCHAR" />
+    <result column="car_check_id" property="carCheckId" jdbcType="VARCHAR" />
+    <result column="car_in_time" property="carInTime" jdbcType="TIMESTAMP" />
+    <result column="car_in_oil" property="carInOil" jdbcType="REAL" />
+    <result column="car_in_money" property="carInMoney" jdbcType="DECIMAL" />
+    <result column="car_in_feedback" property="carInFeedback" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="car_id" property="carId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tab_car_in
+    where car_in_id = #{carInId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.CarIn" >
+    insert into tab_car_in (car_in_id, car_out_id, car_check_id, 
+      car_in_time, car_in_oil, car_in_money, 
+      car_in_feedback, user_id, car_id
+      )
+    values (#{carInId,jdbcType=VARCHAR}, #{carOutId,jdbcType=VARCHAR}, #{carCheckId,jdbcType=VARCHAR}, 
+      #{carInTime,jdbcType=TIMESTAMP}, #{carInOil,jdbcType=REAL}, #{carInMoney,jdbcType=DECIMAL}, 
+      #{carInFeedback,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.CarIn" >
+    update tab_car_in
+    set car_out_id = #{carOutId,jdbcType=VARCHAR},
+      car_check_id = #{carCheckId,jdbcType=VARCHAR},
+      car_in_time = #{carInTime,jdbcType=TIMESTAMP},
+      car_in_oil = #{carInOil,jdbcType=REAL},
+      car_in_money = #{carInMoney,jdbcType=DECIMAL},
+      car_in_feedback = #{carInFeedback,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      car_id = #{carId,jdbcType=VARCHAR}
+    where car_in_id = #{carInId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select car_in_id, car_out_id, car_check_id, car_in_time, car_in_oil, car_in_money, 
+    car_in_feedback, user_id, car_id
+    from tab_car_in
+    where car_in_id = #{carInId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select car_in_id, car_out_id, car_check_id, car_in_time, car_in_oil, car_in_money, 
+    car_in_feedback, user_id, car_id
+    from tab_car_in
+  </select>
+  <select id="selectByCarId" resultMap="BaseResultMap">
+    select * from tab_car_in
+    where car_id=#{carId}
+  </select>
+</mapper>

@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-5.1.15-bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/mysql-connector-java-5.1.15-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/mybatis-spring-2.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/pagehelper-5.1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/poi-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-aop-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-aspects-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-beans-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-context-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-core-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-expression-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-jdbc-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-orm-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-oxm-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-test-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-tx-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-web-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/spring-webmvc-5.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/lib/standard-1.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

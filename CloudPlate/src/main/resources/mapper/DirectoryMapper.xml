@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zut.mapper.DirectoryMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.Directory">
+    <id column="did" jdbcType="INTEGER" property="did" />
+    <result column="dname" jdbcType="VARCHAR" property="dname" />
+    <result column="dtype" jdbcType="INTEGER" property="dtype" />
+    <result column="dtime" jdbcType="DATE" property="dtime" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="dfu" jdbcType="VARCHAR" property="dfu" />
+    <result column="dfid" jdbcType="INTEGER" property="dfid" />
+    <result column="dsize" jdbcType="INTEGER" property="dsize" />
+    <result column="dprivate" jdbcType="INTEGER" property="dprivate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tab_my_directory
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.Directory">
+    insert into tab_my_directory (did, dname, dtype, 
+      dtime, uid, dfu, dfid, 
+      dsize, dprivate)
+    values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtype,jdbcType=INTEGER}, 
+      #{dtime,jdbcType=DATE}, #{uid,jdbcType=INTEGER}, #{dfu,jdbcType=VARCHAR}, #{dfid,jdbcType=INTEGER}, 
+      #{dsize,jdbcType=INTEGER}, #{dprivate,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.Directory">
+    update tab_my_directory
+    set dname = #{dname,jdbcType=VARCHAR},
+      dtype = #{dtype,jdbcType=INTEGER},
+      dtime = #{dtime,jdbcType=DATE},
+      uid = #{uid,jdbcType=INTEGER},
+      dfu = #{dfu,jdbcType=VARCHAR},
+      dfid = #{dfid,jdbcType=INTEGER},
+      dsize = #{dsize,jdbcType=INTEGER},
+      dprivate = #{dprivate,jdbcType=INTEGER}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select did, dname, dtype, dtime, uid, dfu, dfid, dsize, dprivate
+    from tab_my_directory
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select did, dname, dtype, dtime, uid, dfu, dfid, dsize, dprivate
+    from tab_my_directory
+  </select>
+
+  <!--    int deleteMany(String dids)-->
+  <delete id="deleteMany">
+        delete from tab_my_directory where did in (${dids})
+  </delete>
+</mapper>

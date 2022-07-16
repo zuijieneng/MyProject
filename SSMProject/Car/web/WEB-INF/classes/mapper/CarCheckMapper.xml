@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.zut.mapper.CarCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.CarCheck" >
+    <id column="car_check_id" property="carCheckId" jdbcType="VARCHAR" />
+    <result column="car_id" property="carId" jdbcType="VARCHAR" />
+    <result column="car_check_time" property="carCheckTime" jdbcType="TIMESTAMP" />
+    <result column="car_describe" property="carDescribe" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="car_check_status" property="carCheckStatus" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <delete id="deleteByPrimaryKey">
+    delete from tab_car_check where car_check_id = #{carCheckId}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.CarCheck" >
+    insert into tab_car_check (car_check_id, car_id, car_check_time, 
+      car_describe, user_id, car_check_status
+      )
+    values (#{carCheckId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, #{carCheckTime,jdbcType=TIMESTAMP}, 
+      #{carDescribe,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{carCheckStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.CarCheck" >
+    update tab_car_check
+    set car_id = #{carId,jdbcType=VARCHAR},
+      car_check_time = #{carCheckTime,jdbcType=TIMESTAMP},
+      car_describe = #{carDescribe,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      car_check_status = #{carCheckStatus,jdbcType=INTEGER}
+    where car_check_id = #{carCheckId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select car_check_id, car_id, car_check_time, car_describe, user_id, car_check_status
+    from tab_car_check
+    where car_check_id = #{carCheckId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select car_check_id, car_id, car_check_time, car_describe, user_id, car_check_status
+    from tab_car_check
+    order by car_check_time
+  </select>
+</mapper>

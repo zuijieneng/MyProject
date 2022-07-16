@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <!-- 注释 -->
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/><!-- 生成代码的时候是否生成注释，true是取消注释，false会生成注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳,true是取消-->
+        </commentGenerator>
+        <!-- 数据库的连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/cloudplate"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+        <!-- javaBean的生成策略-->
+        <javaModelGenerator targetPackage="com.edu.zut.entity" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" /><!--如果是true，则com.atgiugu.mybatis.pojo是包，反之是目录-->
+            <property name="trimStrings" value="true" /><!--数据库中字段前后空格去掉-->
+        </javaModelGenerator>
+        <!-- SQL映射文件的生成策略 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- Mapper接口的生成策略 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.edu.zut.mapper" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+<!--        <table tableName="tab_my_directory" domainObjectName="Directory"/>-->
+        <table tableName="tab_my_file" domainObjectName="File"/>
+
+    </context>
+</generatorConfiguration>

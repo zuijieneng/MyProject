@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zut.mapper.CarMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.Car">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="car_logo" jdbcType="VARCHAR" property="carLogo" />
+    <result column="car_number" jdbcType="CHAR" property="carNumber" />
+    <result column="car_time" jdbcType="TIMESTAMP" property="carTime" />
+    <result column="car_zuo" jdbcType="INTEGER" property="carZuo" />
+    <result column="car_color" jdbcType="CHAR" property="carColor" />
+    <result column="car_price" jdbcType="DECIMAL" property="carPrice" />
+    <result column="car_photo" jdbcType="VARCHAR" property="carPhoto" />
+    <result column="car_status" jdbcType="INTEGER" property="carStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tab_car
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.Car">
+    insert into tab_car (car_id, car_logo, car_number, 
+      car_time, car_zuo, car_color, 
+      car_price, car_photo, car_status
+      )
+    values (#{carId,jdbcType=VARCHAR}, #{carLogo,jdbcType=VARCHAR}, #{carNumber,jdbcType=CHAR}, 
+      #{carTime,jdbcType=TIMESTAMP}, #{carZuo,jdbcType=INTEGER}, #{carColor,jdbcType=CHAR}, 
+      #{carPrice,jdbcType=DECIMAL}, #{carPhoto,jdbcType=VARCHAR}, #{carStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.Car">
+    update tab_car
+    set car_logo = #{carLogo,jdbcType=VARCHAR},
+      car_number = #{carNumber,jdbcType=CHAR},
+      car_time = #{carTime,jdbcType=TIMESTAMP},
+      car_zuo = #{carZuo,jdbcType=INTEGER},
+      car_color = #{carColor,jdbcType=CHAR},
+      car_price = #{carPrice,jdbcType=DECIMAL},
+      car_photo = #{carPhoto,jdbcType=VARCHAR},
+      car_status = #{carStatus,jdbcType=INTEGER}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select car_id, car_logo, car_number, car_time, car_zuo, car_color, car_price, car_photo, 
+    car_status
+    from tab_car
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select car_id, car_logo, car_number, car_time, car_zuo, car_color, car_price, car_photo, 
+    car_status
+    from tab_car
+  </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Car:war exploded">
+    <output-path>$PROJECT_DIR$/web</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Car/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Car" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="c3p0-0.9.5.2" />
+          <element id="library" level="project" name="log4j-1.2.17" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.15-bin" />
+          <element id="library" level="project" name="jackson-annotations-2.10.1" />
+          <element id="library" level="module" name="JUnit4" module-name="Car" />
+          <element id="library" level="project" name="servlet-api" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

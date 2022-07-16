@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zut.mapper.FileMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zut.entity.MyFile">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="furl" jdbcType="VARCHAR" property="furl" />
+    <result column="fmd5" jdbcType="VARCHAR" property="fmd5" />
+    <result column="fsize" jdbcType="INTEGER" property="fsize" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tab_my_file
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edu.zut.entity.MyFile">
+    insert into tab_my_file (fid, furl, fmd5, 
+      fsize)
+    values (#{fid,jdbcType=INTEGER}, #{furl,jdbcType=VARCHAR}, #{fmd5,jdbcType=VARCHAR}, 
+      #{fsize,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.edu.zut.entity.MyFile">
+    update tab_my_file
+    set furl = #{furl,jdbcType=VARCHAR},
+      fmd5 = #{fmd5,jdbcType=VARCHAR},
+      fsize = #{fsize,jdbcType=INTEGER}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select fid, furl, fmd5, fsize
+    from tab_my_file
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select fid, furl, fmd5, fsize
+    from tab_my_file
+  </select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:p="http://www.springframework.org/schema/p"
+          xmlns:context="http://www.springframework.org/schema/context"
+          xmlns:aop="http://www.springframework.org/schema/aop"
+          xmlns:mvc="http://www.springframework.org/schema/mvc"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 1：通过context标签自动扫描包 -->
+    <context:component-scan base-package="com.edu.zut.controller"/>
+    <!-- 2：通过mvc标签自动注册注解的处理器映射器和处理器适配器 -->
+    <mvc:annotation-driven/>
+<!--    &lt;!&ndash; 3：配置视图解析器 &ndash;&gt;-->
+<!--    &lt;!&ndash; ctrl+shift+t全workspase中查找类  &ndash;&gt;-->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--        <property name="prefix" value="/"/>-->
+<!--        <property name="suffix" value=".jsp"/>-->
+<!--    </bean>-->
+    <!-- 4：多部件表单解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="88888888"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+    <!-- 5：配置所有的拦截器
+    <mvc:interceptors>
+       <mvc:interceptor>
+             <mvc:mapping path="/*/*.action"/>
+             <mvc:exclude-mapping path="/user/login.action"/>
+             <mvc:exclude-mapping path="/ajax/getYzm.action"/>
+             <bean  class="com.zhiyou100.interceptor.UserLoginInterceptor"/>
+       </mvc:interceptor>
+    </mvc:interceptors>
+    -->
+</beans>
